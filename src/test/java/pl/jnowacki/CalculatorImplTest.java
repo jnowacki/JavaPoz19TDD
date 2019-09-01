@@ -47,4 +47,26 @@ public class CalculatorImplTest {
         //then
         assertEquals(expected, calculator.display());
     }
+
+    @Test
+    public void shouldDisplayEmptyStringAtStartup() {
+        String display = calculator.display();
+
+        assertTrue(display.isEmpty());
+    }
+
+    @Test
+    public void shouldDisplayNumberAfterPress() {
+
+        //given
+        int numberToPress = 3;
+        String expectedDisplay = "3";
+
+        //when
+        calculator.pressNumber(numberToPress);
+        String display = calculator.display();
+
+        //then
+        assertEquals(expectedDisplay, display);
+    }
 }
