@@ -17,7 +17,9 @@ public class CalculatorImpl implements Calculator {
 
     @Override
     public void add(int numberA, int numberB) {
+        clear();
 
+        pressNumber(numberA + numberB);
     }
 
     @Override

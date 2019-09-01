@@ -83,4 +83,56 @@ public class CalculatorImplTest {
         // then
         assertTrue(calculator.display().isEmpty());
     }
+
+    @Test
+    public void shouldDisplay8WhenAdd3And5() {
+
+        // given
+        int numberA = 3;
+        int numberB = 5;
+
+        String expected = "8";
+
+        // when
+        calculator.add(numberA, numberB);
+
+        //then
+        assertEquals(expected, calculator.display());
+    }
+
+    @Test
+    public void shouldDisplay3WhenAdd2And1() {
+
+        // given
+        int numberA = 2;
+        int numberB = 1;
+
+        String expected = "3";
+
+        // when
+        calculator.add(numberA, numberB);
+
+        //then
+        assertEquals(expected, calculator.display());
+    }
+
+    @Test
+    public void shouldDisplayCorrectValuesWhenAddingTwice() {
+        // given
+        int numberA = 2;
+        int numberB = 1;
+        String expected = "3";
+        calculator.add(numberA, numberB);
+        assertEquals(expected, calculator.display());
+
+        numberA = 3;
+        numberB = 5;
+        expected = "8";
+
+        // when
+        calculator.add(numberA, numberB);
+
+        // then
+        assertEquals(expected, calculator.display());
+    }
 }
