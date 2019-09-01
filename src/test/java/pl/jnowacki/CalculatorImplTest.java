@@ -85,35 +85,18 @@ public class CalculatorImplTest {
     }
 
     @Test
-    public void shouldDisplay8WhenAdd3And5() {
-
-        // given
-        int numberA = 3;
-        int numberB = 5;
-
-        String expected = "8";
-
-        // when
-        calculator.add(numberA, numberB);
-
-        //then
-        assertEquals(expected, calculator.display());
+    public void shouldAddDifferentNumbers() {
+        shouldAddCorrectly(2, 5, "7");
+        shouldAddCorrectly(1, 3, "4");
     }
 
-    @Test
-    public void shouldDisplay3WhenAdd2And1() {
-
-        // given
-        int numberA = 2;
-        int numberB = 1;
-
-        String expected = "3";
+    private void shouldAddCorrectly(int a, int b, String expectedResult) {
 
         // when
-        calculator.add(numberA, numberB);
+        calculator.add(a, b);
 
         //then
-        assertEquals(expected, calculator.display());
+        assertEquals(expectedResult, calculator.display());
     }
 
     @Test
