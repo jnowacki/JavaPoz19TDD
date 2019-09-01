@@ -2,8 +2,9 @@ package pl.jnowacki;
 
 public class CalculatorImpl implements Calculator {
 
+    @Override
     public int add(int a, int b) {
-        return a + b;
+        int result = a + b;
+        return result;
     }
-
 }

@@ -31,33 +31,12 @@ public class CalculatorImplTest {
 
     @Test
     public void testAdd() {
-        System.out.println("test1");
         // given
         int a = 2;
         int b = 2;
 
-        int expected = 4;
+        int expectedResult = 4;
 
-        //when
-        int result = calculator.add(a, b);
-
-        //then
-        assertEquals("Add failed", expected, result);
-    }
-
-    @Test
-    public void testAdd2() {
-        System.out.println("test2");
-        // given
-        int a = 3;
-        int b = 5;
-
-        int expected = 8;
-
-        //when
-        int result = calculator.add(a, b);
-
-        //then
-        assertEquals("Add failed", expected, result);
+        assertEquals(expectedResult, calculator.add(2, 2));
     }
 }
