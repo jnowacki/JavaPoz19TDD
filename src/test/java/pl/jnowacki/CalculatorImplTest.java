@@ -30,28 +30,21 @@ public class CalculatorImplTest {
     }
 
     @Test
-    public void testAdd() {
+    public void shouldDisplayConcatenatedNumbersWhenPressed() {
+
         // given
-        int a = 2;
-        int b = 2;
+        int a = 5;
+        int b = 4;
+        int c = 3;
 
-        int expectedResult = 4;
-
-        assertEquals(expectedResult, calculator.add(2, 2));
-    }
-
-    @Test
-    public void testSub() {
-        // given
-        int a = 3;
-        int b = 2;
-
-        int expectedResult = 1;
+        String expected = "543";
 
         // when
-        int result = calculator.sub(a, b);
+        calculator.pressNumber(a);
+        calculator.pressNumber(b);
+        calculator.pressNumber(c);
 
-        // then
-        assertEquals(expectedResult, result);
+        //then
+        assertEquals(expected, calculator.display());
     }
 }
