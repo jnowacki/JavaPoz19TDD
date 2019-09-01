@@ -32,4 +32,14 @@ public class CalculatorParametrizedByJUnitParams {
         //then
         assertEquals(expected, calculator.display());
     }
+
+    @Test
+    @Parameters({"4, 7, -3", "99, 73, 26"})
+    public void shouldSubDifferentNumbers(int a, int b, String expected) {
+        // when
+        calculator.sub(a, b);
+
+        //then
+        assertEquals(expected, calculator.display());
+    }
 }

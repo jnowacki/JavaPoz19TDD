@@ -21,15 +21,12 @@ public class CalculatorParametrizedByFieldTest {
     @Parameterized.Parameter(value = 1)
     public int b;
 
-    @Parameterized.Parameter(value = 2)
-    public String expectedResult;
-
-    @Parameterized.Parameters(name = "{index}: testAdd({0}+{1}) = {2}")
+    @Parameterized.Parameters(name = "{index}: test({0} {1})")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {1, 5, "6"},
-                {3, 6, "9"},
-                {1, 1, "2"}
+                {1, 5},
+                {3, 6},
+                {1, 1}
         });
     }
 
@@ -45,6 +42,15 @@ public class CalculatorParametrizedByFieldTest {
         calculator.add(a, b);
 
         //then
-        assertEquals(expectedResult, calculator.display());
+        assertEquals(String.valueOf(a + b), calculator.display());
+    }
+
+    @Test
+    public void shouldSubDifferentNumbers() {
+        // when
+        calculator.sub(a, b);
+
+        //then
+        assertEquals(String.valueOf(a - b), calculator.display());
     }
 }
