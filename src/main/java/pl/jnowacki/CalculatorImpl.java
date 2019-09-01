@@ -24,7 +24,8 @@ public class CalculatorImpl implements Calculator {
 
     @Override
     public void sub(int numberA, int numberB) {
-
+        clear();
+        pressNumber(numberA - numberB);
     }
 
     @Override

@@ -118,4 +118,38 @@ public class CalculatorImplTest {
         // then
         assertEquals(expected, calculator.display());
     }
+
+    @Test
+    public void shouldSubtractNumbersCorrectly() {
+        // given
+        int numberA = 4;
+        int numberB = 2;
+
+        String expected = "2";
+
+        // when
+        calculator.sub(numberA, numberB);
+
+        //then
+        assertEquals(expected, calculator.display());
+    }
+
+    @Test
+    public void shouldSubtractNumbersCorrectlyTwice() {
+        // given
+        int numberA = 4;
+        int numberB = 2;
+        String expected = "2";
+
+        calculator.sub(numberA, numberB);
+
+        numberA = 3;
+        numberB = 5;
+        expected = "-2";
+
+        calculator.sub(numberA, numberB);
+
+        //then
+        assertEquals(expected, calculator.display());
+    }
 }
