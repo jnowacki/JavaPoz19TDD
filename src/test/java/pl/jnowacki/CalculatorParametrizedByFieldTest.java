@@ -16,13 +16,13 @@ public class CalculatorParametrizedByFieldTest {
     private Calculator calculator;
 
     @Parameterized.Parameter(value = 0)
-    private int a;
+    public int a;
 
     @Parameterized.Parameter(value = 1)
-    private int b;
+    public int b;
 
     @Parameterized.Parameter(value = 2)
-    private String expectedResult;
+    public String expectedResult;
 
     @Parameterized.Parameters(name = "{index}: testAdd({0}+{1}) = {2}")
     public static Collection<Object[]> data() {
