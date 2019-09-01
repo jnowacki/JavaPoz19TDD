@@ -32,7 +32,7 @@ public class CalculatorImpl implements Calculator {
 
     @Override
     public void clear() {
-
+        display = "";
     }
 
     @Override

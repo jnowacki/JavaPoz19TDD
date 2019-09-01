@@ -69,4 +69,18 @@ public class CalculatorImplTest {
         //then
         assertEquals(expectedDisplay, display);
     }
+
+    @Test
+    public void shouldHaveEmptyScreenAfterClear() {
+
+        // given
+        calculator.pressNumber(5);
+        assertEquals("5", calculator.display());
+
+        // when
+        calculator.clear();
+
+        // then
+        assertTrue(calculator.display().isEmpty());
+    }
 }
