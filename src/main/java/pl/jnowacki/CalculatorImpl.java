@@ -7,4 +7,9 @@ public class CalculatorImpl implements Calculator {
         int result = a + b;
         return result;
     }
+
+    @Override
+    public int sub(int a, int b) {
+        return a - b;
+    }
 }

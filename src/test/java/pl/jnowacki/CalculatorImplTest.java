@@ -39,4 +39,19 @@ public class CalculatorImplTest {
 
         assertEquals(expectedResult, calculator.add(2, 2));
     }
+
+    @Test
+    public void testSub() {
+        // given
+        int a = 3;
+        int b = 2;
+
+        int expectedResult = 1;
+
+        // when
+        int result = calculator.sub(a, b);
+
+        // then
+        assertEquals(expectedResult, result);
+    }
 }
