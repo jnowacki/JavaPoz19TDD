@@ -1,8 +1,10 @@
 package pl.jnowacki;
 
 import org.junit.*;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
+import static pl.jnowacki.CalculatorImpl.DIV_0_MSG;
 
 public class CalculatorImplTest {
 
@@ -151,5 +153,63 @@ public class CalculatorImplTest {
 
         //then
         assertEquals(expected, calculator.display());
+    }
+
+    @Test
+    public void shouldDisplay2When4DividedBy2() {
+        // given
+        int numberA = 5;
+        int numberB = 2;
+
+        String expected = "2";
+
+        // when
+        calculator.div(numberA, numberB);
+
+        //then
+        assertEquals(expected, calculator.display());
+    }
+
+    @Test
+    public void shouldDivideNumbersCorrectlyTwice() {
+        // given
+        int numberA = 4;
+        int numberB = 2;
+        String expected = "2";
+
+        calculator.div(numberA, numberB);
+
+        numberA = 10;
+        numberB = 2;
+        expected = "5";
+
+        calculator.div(numberA, numberB);
+
+        //then
+        assertEquals(expected, calculator.display());
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenDividedBy0() {
+
+        try {
+            calculator.div(100, 0);
+            fail();
+        } catch (Exception e) {
+            assertTrue(e instanceof IllegalArgumentException);
+            assertEquals(DIV_0_MSG, e.getMessage());
+        }
+
+    }
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void shouldThrowExceptionWhenDividedBy0RuleCheck() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage(DIV_0_MSG);
+
+        calculator.div(100, 0);
     }
 }

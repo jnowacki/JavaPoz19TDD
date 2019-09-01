@@ -2,6 +2,8 @@ package pl.jnowacki;
 
 public class CalculatorImpl implements Calculator {
 
+    public static final String DIV_0_MSG = "Nie dziel przez zero";
+
     private String display = "";
 
     @Override
@@ -31,6 +33,12 @@ public class CalculatorImpl implements Calculator {
     @Override
     public void div(int numberA, int numberB) throws IllegalArgumentException {
 
+        if(numberB == 0) {
+            throw new IllegalArgumentException(DIV_0_MSG);
+        }
+
+        clear();
+        pressNumber(numberA/numberB);
     }
 
     @Override
