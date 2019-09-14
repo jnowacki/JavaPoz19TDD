@@ -1,5 +1,7 @@
 package pl.jnowacki;
 
+import org.hamcrest.FeatureMatcher;
+import org.hamcrest.Matcher;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -42,4 +44,52 @@ public class HamcrestExercisesTest {
         assertThat(values, hasItem("dwa"));
         assertThat(values, hasSize(3));
     }
+
+    @Test
+    public void shouldBeginWithA() {
+        String testedValue = "aString";
+
+        assertThat(testedValue, beginsWith(is('a')));
+
+    }
+
+    @Test
+    public void shouldHaveLength3() {
+        String testedValue = "asd";
+
+        assertThat(testedValue, hasLength(is(3)));
+    }
+
+    @Test
+    public void shouldHaveLength6() {
+        String testedValue = "asdasd";
+
+        assertThat(testedValue, hasLength(is(6)));
+    }
+
+    @Test
+    public void shouldHaveLength12() {
+        String testedValue = "asdasdasdasd";
+
+        assertThat(testedValue, hasLength(is(12)));
+    }
+
+    public static Matcher<String> beginsWith(Matcher<? super Character> matcher) {
+        return new FeatureMatcher<String, Character>(matcher, "a String that begins with", "first letter") {
+            @Override
+            protected Character featureValueOf(String actual) {
+                return actual.charAt(0);
+            }
+        };
+    }
+
+    public static Matcher<String> hasLength(Matcher<? super Integer> matcher) {
+        return new FeatureMatcher<String, Integer>(matcher, "a String that has length", "string length") {
+            @Override
+            protected Integer featureValueOf(String actual) {
+                return actual.length();
+            }
+        };
+    }
+
 }
