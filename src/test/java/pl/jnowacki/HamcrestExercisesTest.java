@@ -12,23 +12,26 @@ public class HamcrestExercisesTest {
 
     @Test
     public void fiveShouldBeGreaterThanThree() {
-
+        assertThat(5, greaterThan(3));
     }
 
     @Test
     public void emptyStringShouldBeEmpty() {
-
+        assertThat("", isEmptyOrNullString());
     }
 
     @Test
     public void doesStringContainKonfabulacja() {
+        assertThat("afdsfdsfdsfaqwtjjfvvjfyu",
+                not(containsString("konfabulacja")));
     }
 
     @Test
     public void doesArrayContainRightValues() {
 
-        int[] values = {5, 7, 2};
+        Integer[] values = {5, 7, 2};
 
+        assertThat(values, arrayContaining(5, 7, 2));
     }
 
     @Test
@@ -36,5 +39,7 @@ public class HamcrestExercisesTest {
 
         List<String> values = Arrays.asList("raz", "dwa", "trzy");
 
+        assertThat(values, hasItem("dwa"));
+        assertThat(values, hasSize(3));
     }
 }
