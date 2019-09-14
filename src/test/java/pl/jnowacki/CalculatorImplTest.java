@@ -49,13 +49,14 @@ public class CalculatorImplTest {
 
         //then
 //        assertEquals(expected, calculator.display());
+        assertThat(calculator.display()).isEqualTo(expected);
     }
 
     @Test
     public void shouldDisplayEmptyStringAtStartup() {
         String display = calculator.display();
 
-//        assertTrue(display.isEmpty());
+        assertThat(calculator.display()).isNotEmpty();
     }
 
     @Test
@@ -71,6 +72,7 @@ public class CalculatorImplTest {
 
         //then
 //        assertEquals(expectedDisplay, display);
+        assertThat(display).isEqualTo(expectedDisplay);
     }
 
     @Test
@@ -200,6 +202,10 @@ public class CalculatorImplTest {
 //            assertTrue(e instanceof IllegalArgumentException);
 //            assertEquals(DIV_0_MSG, e.getMessage());
         }
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.div(100, 0))
+                .withMessage(DIV_0_MSG);
 
     }
 
