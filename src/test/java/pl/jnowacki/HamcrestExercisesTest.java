@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static pl.jnowacki.ThreeLetterItemsMatcher.hasOnly3LetterItems;
 
 public class HamcrestExercisesTest {
 
@@ -91,5 +92,27 @@ public class HamcrestExercisesTest {
             }
         };
     }
+
+    public static Matcher<NumberWrapper> doesReturn15(Matcher<? super Integer> matcher) {
+        return new FeatureMatcher<NumberWrapper, Integer>(matcher, "Number wrapper that returns 15", "NumberWrapper return value") {
+            @Override
+            protected Integer featureValueOf(NumberWrapper actual) {
+                return actual.getNumber();
+            }
+        };
+    }
+
+    @Test
+    public void shouldReturn15() {
+        assertThat(new NumberWrapper(), doesReturn15(is(15)));
+    }
+
+    @Test
+    public void testIfHasOnly3LetterItems() {
+        List<String> listUnderTest = Arrays.asList("one", "twoa");
+
+        assertThat(listUnderTest, hasOnly3LetterItems());
+    }
+
 
 }
